@@ -88,7 +88,7 @@ const ducks = [
         age: 4,
         featherNum: 0,
         name: 'Spidey',
-        imageUrl: 'https://i.ebayimg.com/images/g/3O4AAOSwH4xZ4MiD/s-l300.jpghttps://i.ebayimg.com/images/g/3O4AAOSwH4xZ4MiD/s-l300.jpg'
+        imageUrl: 'https://i.ebayimg.com/images/g/3O4AAOSwH4xZ4MiD/s-l640.jpg'
     },
     {
         color: 'pink',
@@ -105,3 +105,37 @@ const ducks = [
 ];
 
 console.log(ducks);
+
+const printToDom = (elementID, textToPrint) => {
+    const selectedDiv = document.getElementById(elementID);
+    selectedDiv.innerHTML = textToPrint;
+};
+
+
+const duckBuilder = (arrayOfThings) => {
+    let domString = '';
+    for (let i=0; i < arrayOfThings.length; i++) {
+        // domString += '<div class="ducks">';
+        // domString += `<h4>${arrayOfThings[i].name}</h4>`;
+        // domString += '</div>';
+
+        domString += '<div class="col-md-6 col-lg-4">';
+        domString += '<div class="card">';
+        domString += `  <img src="${arrayOfThings[i].imageUrl}" class="card-img-top" alt="...">`;
+        domString += '  <div class="card-body">';
+        domString += `      <h5 class="card-title">${arrayOfThings[i].name}</h5>`;
+        domString += `      <p class="card-text">${arrayOfThings[i].socialStatus}</p>`;
+        domString += `      <p class="card-text">${arrayOfThings[i].diet}</p>`;
+        domString += '  </div>';
+        domString += '</div>';
+        domString += '</div>';
+    };
+    printToDom('ducksList', domString);
+};
+
+const init = () => {
+    duckBuilder(ducks); 
+};
+
+init();
+
