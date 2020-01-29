@@ -133,9 +133,97 @@ const duckBuilder = (arrayOfThings) => {
     printToDom('ducksList', domString);
 };
 
+//You can make a single function using the button ID : 
+const choseColor = (e) => {
+    const buttonId = e.target.id;
+    const selectedDucks = [];
+    for (let i=0; i < ducks.length; i++) {
+            if (ducks[i].color === buttonId) {
+                selectedDucks.push(ducks[i]);
+            }
+        }
+        duckBuilder(selectedDucks);
+    };
+
+// const choseBlue = () => {
+//     console.log("blue!");
+//     const blueDucks = [];
+//     for (let i=0; i < ducks.length; i++) {
+//         if (ducks[i].color === 'blue') {
+//             blueDucks.push(ducks[i]);
+//         };
+//     };
+//     duckBuilder(blueDucks);
+// };
+
+// const chosePink = () => {
+//     console.log("pink!");
+//     const pinkDucks = [];
+//     for (let i=0; i < ducks.length; i++) {
+//         if (ducks[i].color === 'pink') {
+//             pinkDucks.push(ducks[i]);
+//         };
+//     };
+//     duckBuilder(pinkDucks);
+// };
+
+// const choseOrange = () => {
+//     console.log("orange!");  
+//     const orangeDucks = [];
+//     for (let i=0; i < ducks.length; i++) {
+//         if (ducks[i].color === 'orange') {
+//             orangeDucks.push(ducks[i]);
+//         };
+//     };
+//     duckBuilder(orangeDucks);
+// };
+
+const choseFemale = () => {
+    console.log("female!");  
+};
+
+const choseMale = () => {
+    console.log("male!");  
+};
+
+const choseGender = (e) => {
+    const buttonId = e.target.id;
+    const selectedDucks = [];
+    for (let i=0; i < ducks.length; i++) {
+            if (ducks[i].gender === buttonId) {
+                selectedDucks.push(ducks[i]);
+            }
+        }
+        duckBuilder(selectedDucks);
+    };
+
+
+
+const choseRubber = () => {
+    const selectedDucks = [];
+    for (let i=0; i < ducks.length; i++) {
+            if (ducks[i].isRubber) {
+                selectedDucks.push(ducks[i]);
+            }
+        }
+        duckBuilder(selectedDucks);
+    };
+
+const events = () => {
+    document.getElementById('blue').addEventListener('click', choseColor);
+    document.getElementById('pink').addEventListener('click', choseColor);
+    document.getElementById('orange').addEventListener('click', choseColor);
+    document.getElementById('female').addEventListener('click', choseGender);
+    document.getElementById('male').addEventListener('click', choseGender);
+    document.getElementById('rubber').addEventListener('click', choseRubber);
+};
+
 const init = () => {
     duckBuilder(ducks); 
+    events();
 };
 
 init();
 
+//filter by: color, rubber, gender
+//3 buttons one for each color
